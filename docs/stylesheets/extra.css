@@ -1,0 +1,21 @@
+/* Increase central content/layout width by ~30% for desktop */
+.md-grid {
+  max-width: 80rem;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+}
+
+.md-typeset table:not([class]) {
+  font-size: 0.82rem;
+}
+
+.md-typeset img {
+  border-radius: 8px;
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 8px;
+}

@@ -1,0 +1,43 @@
+[project]
+site_name = "TTbarHadronic Documentation"
+site_description = "Presentation and meeting documentation for the all-hadronic ttbar analysis"
+site_url = "https://mandalaritra1.github.io/doc-ttbarhad/"
+docs_dir = "docs"
+site_dir = "site-zensical"
+extra_css = ["stylesheets/extra.css"]
+nav = [
+    { "Overview" = "index.md" },
+    { "Analysis" = [
+        { "Introduction" = "analysis/introduction.md" },
+        { "Phase Space" = "analysis/phase-space.md" },
+        { "Datasets" = "analysis/datasets.md" },
+        { "Selections" = "analysis/selections.md" },
+        { "Data/MC Validation" = "analysis/datamc-validation.md" },
+        { "Background Estimation" = "analysis/background-estimation.md" },
+        { "Results" = "analysis/results.md" },
+    ] },
+    { "Meetings" = [
+        { "Recents" = "meetings/recents.md" },
+        { "Archive" = "meetings/all.md" },
+    ] },
+]
+
+[project.theme]
+variant = "modern"
+features = [
+    "navigation.tabs",
+    "navigation.sections",
+    "content.code.copy"
+]
+
+[[project.theme.palette]]
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+scheme = "slate"
+primary = "green"
+accent = "light-green"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"

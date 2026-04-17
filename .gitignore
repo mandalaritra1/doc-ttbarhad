@@ -1,0 +1,5 @@
+.codex
+.cache/
+.venv*/
+site-zensical/
+site/
