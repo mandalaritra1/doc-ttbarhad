@@ -5,6 +5,10 @@ site_url = "https://mandalaritra1.github.io/doc-ttbarhad/"
 docs_dir = "docs"
 site_dir = "site-zensical"
 extra_css = ["stylesheets/extra.css"]
+extra_javascript = [
+    "javascripts/mathjax.js",
+    "https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js",
+]
 nav = [
     { "Overview" = "index.md" },
     { "Analysis" = [
