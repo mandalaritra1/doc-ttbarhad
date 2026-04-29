@@ -11,6 +11,11 @@ extra_javascript = [
 ]
 nav = [
     { "Overview" = "index.md" },
+    { "Guide" = [
+        { "Updating This Site" = "guide/getting-started.md" },
+        { "Figure Checklist" = "guide/visual-check.md" },
+        { "Repositories and Coding" = "guide/repositories-and-coding.md" },
+    ] },
     { "Analysis" = [
         { "Introduction" = "analysis/introduction.md" },
         { "Phase Space" = "analysis/phase-space.md" },
