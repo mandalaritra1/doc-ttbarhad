@@ -33,20 +33,33 @@ From a local machine, log in to LPC:
 ```bash
 ssh amandal2@cmslpc-el9.fnal.gov
 ```
+Source the CMS environment:
+```bash
+source /cvmfs/cms.cern.ch/cmsset_default.sh
+```
 
 Then bind the real `nobackup` target before entering the CMSSW container:
+### Finding your own bind path from `~/nobackup`
+
+On LPC, `~/nobackup` is often not a real directory. It is usually a symlink to a real `/uscms_data/...` location.
+
+First, check it **outside** the Singularity container:
 
 ```bash
-export SINGULARITY_BINDPATH=/uscms_data/d1/amandal2:/uscms_data/d1/amandal2
-cmssw-el7
+cd ~
+ls -ld nobackup
+readlink -f nobackup
 ```
 
-If the site uses Apptainer instead of Singularity, use:
+Then activate the container using - 
 
 ```bash
-export APPTAINER_BINDPATH=/uscms_data/d1/amandal2:/uscms_data/d1/amandal2
-cmssw-el7
+cmssw-el7 --bind /uscms_data/d1/amandal2:/uscms_data/d1/amandal2
 ```
+
+
+
+
 
 Inside the container, verify that the bound path is visible:
 

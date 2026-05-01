@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <rect width="300" height="300" rx="34" fill="#0f1f1a"/>
+  <g fill="none" stroke="#f8fafc" stroke-linecap="round" stroke-linejoin="round" stroke-width="18">
+    <path d="M3 294 C21 250 55 218 99 185 C143 157 185 125 223 94 C238 81 252 67 265 52"/>
+    <path d="M3 294 C24 266 50 240 82 215 C116 190 148 174 182 161 C213 149 241 132 270 124"/>
+    <path d="M3 294 C30 263 66 241 108 234 C142 228 175 236 209 230 C234 226 251 211 258 176"/>
+    <path d="M3 294 C36 260 83 249 130 254 C161 257 190 270 222 266 C244 263 258 251 271 238"/>
+  </g>
+  <g fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="9">
+    <path d="M3 294 C21 250 55 218 99 185 C143 157 185 125 223 94 C238 81 252 67 265 52"/>
+    <path d="M3 294 C24 266 50 240 82 215 C116 190 148 174 182 161 C213 149 241 132 270 124"/>
+    <path d="M3 294 C30 263 66 241 108 234 C142 228 175 236 209 230 C234 226 251 211 258 176"/>
+    <path d="M3 294 C36 260 83 249 130 254 C161 257 190 270 222 266 C244 263 258 251 271 238"/>
+  </g>
+  <g fill="#22c55e" stroke="#f8fafc" stroke-linejoin="round" stroke-width="5" paint-order="stroke" font-family="Arial, Helvetica, sans-serif" font-size="100" font-weight="700">
+    <text x="20" y="123">t</text>
+    <text x="58" y="123">t</text>
+  </g>
+  <line x1="60" y1="40" x2="93" y2="40" stroke="#f8fafc" stroke-width="12" stroke-linecap="round"/>
+  <line x1="60" y1="40" x2="93" y2="40" stroke="#22c55e" stroke-width="6" stroke-linecap="round"/>
+</svg>

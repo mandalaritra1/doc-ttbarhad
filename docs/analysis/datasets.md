@@ -40,7 +40,7 @@ Luminosity: TBD
 
 | Process | Year | Sample key | Dataset |
 | --- | ---: | --- | --- |
-| QCD multijet | 2024 | `inclusive` | `/QCD_Bin-PT-15to7000_Par-PT-Flat_TuneCH3_13p6TeV_herwig7/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v2/NANOAODSIM` |
+| QCD multijet | 2024 | `inclusive` | `/QCD_PT-15to7000_TuneCP5_Flat2022_13p6TeV_pythia8/RunIII2024Summer24NanoAODv15-NoPU_JMENanoV15_FastSim_150X_mcRun3_2024_realistic_v2-v2/NANOAODSIM` |
 | SM $t\bar{t}$ | 2023 | `inclusive` | `/TTto4Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer23NanoAODv12-JMENano12p5_132X_mcRun3_2023_realistic_v5-v1/NANOAODSIM` |
 | SM $t\bar{t}$ | 2024 | `inclusive` | `/TTto4Q_TuneCP5_13p6TeV_powheg-pythia8/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v2/NANOAODSIM` |
 
@@ -66,4 +66,4 @@ Luminosity: TBD
 
 - Dataset labels, NanoAOD version, and tagger branch should remain explicit because the Run-3 top tagger definition is campaign-dependent.
 - Add event counts after baseline selection once the active processing campaign is frozen.
-
+- QCD pt binned datasets are available and has a lot more statistics. We will likely switch to those for the final analysis.
