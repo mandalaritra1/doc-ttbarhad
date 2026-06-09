@@ -2,35 +2,51 @@
 
 ## Objective
 
-Collect the latest result-facing material after selections, validation, and
-background estimation have a stable configuration.
+Collect result-facing material only after selections, validation, background
+estimation, and systematic assumptions have a stable reviewed configuration.
 
-## Result Inputs
+## Current Status
 
 | Input | Status |
 | --- | --- |
-| Final category definitions | To fill |
-| Final validation plot set | To fill |
-| Background estimate | To fill |
-| Systematic uncertainty summary | To fill |
-| Result plots or limits | To fill |
+| Final category definitions | In progress |
+| Data/MC validation | In progress |
+| 2024 background-fit machinery | Central and forward fits available |
+| Transfer-function scan | Completed for eight polynomial orders per category |
+| Final transfer-function choice | Provisional; configured as central `1x1`, forward `0x1` |
+| F-test statistical validation | Nested-model path and effective bin count still require review |
+| Systematic uncertainty summary | Not yet frozen |
+| Result plots or limits | Not yet ready for this page |
+
+The available F-test tables and postfit projections are background-model
+validation material. They are documented on the
+[Background Estimation](background-estimation.md) page and should not yet be
+presented as final analysis results.
+
+## Readiness Conditions
+
+Before adding result distributions or limits:
+
+1. Freeze the central and forward transfer-function choices.
+2. Validate the nested F-test comparisons and degrees of freedom.
+3. Correct 2024 luminosity and collision-energy labels in fit plots.
+4. Complete closure, GOF, fit-quality, and nuisance checks.
+5. Confirm the systematic model and the intended blinding/unblinding state.
+6. Record the exact input production and saved `runConfig.json` files.
 
 ## Result Presentation
 
-Use this page for figures that are ready to be discussed as analysis results,
-not for exploratory plots. Each entry should state:
+Each future result entry should state:
 
-- Configuration and production date.
-- Dataset/campaign used.
-- Category or combination shown.
-- Whether the figure is preliminary, under review, or approved for slides.
+- configuration and production date;
+- dataset and luminosity;
+- category or combination;
+- transfer-function choice and justification;
+- systematic model;
+- blinding state;
+- whether the figure is work in progress, under review, or approved.
 
 ## Current Takeaway
 
-Results should appear here only when the upstream validation and background
-sections explain the assumptions behind them.
-
-## Open Items
-
-- Add the first result snapshot after the next validated production.
-- Add explicit caveat text for any preliminary result shown in meetings.
+The background-estimation workflow has reached the transfer-function validation
+stage, but no final result snapshot is documented as presentation-ready yet.
