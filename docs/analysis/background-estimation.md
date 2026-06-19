@@ -223,41 +223,10 @@ signal-window panel has no data points (blinded).
 | --- | --- |
 | ![Central postfit projections 2x1](../assets/analysis/background-estimation/2024/postfit-projy-final/cen.png) | ![Forward postfit projections 2x1](../assets/analysis/background-estimation/2024/postfit-projy-final/fwd.png) |
 
-!!! note "Per-order gallery below"
-    The per-candidate gallery that follows was produced during the order scan;
-    its embedded labels still read the inherited `138 fb^-1 (13 TeV)` /
-    `CMS Preliminary` text. The corrected labels apply to the selected-order
-    figures above and to all newly produced result figures.
-
-### Central candidates
-
-| `0x0` | `0x1` |
-| --- | --- |
-| ![Central postfit projy 0x0](../assets/analysis/background-estimation/2024/postfit-projy/cen-0x0.png) | ![Central postfit projy 0x1](../assets/analysis/background-estimation/2024/postfit-projy/cen-0x1.png) |
-| `0x2` | `1x0` |
-| ![Central postfit projy 0x2](../assets/analysis/background-estimation/2024/postfit-projy/cen-0x2.png) | ![Central postfit projy 1x0](../assets/analysis/background-estimation/2024/postfit-projy/cen-1x0.png) |
-| `1x1` | `1x2` |
-| ![Central postfit projy 1x1](../assets/analysis/background-estimation/2024/postfit-projy/cen-1x1.png) | ![Central postfit projy 1x2](../assets/analysis/background-estimation/2024/postfit-projy/cen-1x2.png) |
-| `2x1` | `2x2` |
-| ![Central postfit projy 2x1](../assets/analysis/background-estimation/2024/postfit-projy/cen-2x1.png) | ![Central postfit projy 2x2](../assets/analysis/background-estimation/2024/postfit-projy/cen-2x2.png) |
-
-### Forward candidates
-
-| `0x0` | `0x1` |
-| --- | --- |
-| ![Forward postfit projy 0x0](../assets/analysis/background-estimation/2024/postfit-projy/fwd-0x0.png) | ![Forward postfit projy 0x1](../assets/analysis/background-estimation/2024/postfit-projy/fwd-0x1.png) |
-| `0x2` | `1x0` |
-| ![Forward postfit projy 0x2](../assets/analysis/background-estimation/2024/postfit-projy/fwd-0x2.png) | ![Forward postfit projy 1x0](../assets/analysis/background-estimation/2024/postfit-projy/fwd-1x0.png) |
-| `1x1` | `1x2` |
-| ![Forward postfit projy 1x1](../assets/analysis/background-estimation/2024/postfit-projy/fwd-1x1.png) | ![Forward postfit projy 1x2](../assets/analysis/background-estimation/2024/postfit-projy/fwd-1x2.png) |
-| `2x1` | `2x2` |
-| ![Forward postfit projy 2x1](../assets/analysis/background-estimation/2024/postfit-projy/fwd-2x1.png) | ![Forward postfit projy 2x2](../assets/analysis/background-estimation/2024/postfit-projy/fwd-2x2.png) |
-
 ## Presentation Downloads
 
 - [All pairwise F-test plots](../assets/analysis/background-estimation/2024/pdfs/FTest_pairwise_results_2024.pdf)
 - [F-test numerical tables](../assets/analysis/background-estimation/2024/pdfs/FTest_summary_tables_2024.pdf)
-- [All postfit projection pages](../assets/analysis/background-estimation/2024/pdfs/FTest_postfit_projy_all_transfer_functions_2024.pdf)
 
 ## Current Takeaway
 
