@@ -1,38 +1,46 @@
 # Data/MC Validation
 
-## Objective
+Data/MC comparisons check that the simulation describes the data in the
+control-rich parts of the phase space before the background fit is trusted. The
+analysis is **blinded**: the pass-region top-mass signal window is not compared
+to data.
 
-Track the validation plots and status used to decide whether the current
-analysis configuration is ready for background estimation and results.
+## Core plot set
 
-![Example validation plot](../assets/images/cms-leading-jet-eta.png)
-
-## Core Plot Set
-
-| Observable | Why it matters |
+| Observable | What it checks |
 | --- | --- |
-| Leading AK8 soft-drop mass | Checks top-candidate mass modeling and sideband behavior |
-| Subleading AK8 soft-drop mass | Checks the second candidate and pass/fail category stability |
-| `m_tt` | Main resonance-sensitive spectrum |
-| HT | Validates event-activity modeling and trigger plateau assumptions |
-| Jet rapidity or eta | Checks central/forward category behavior |
-| Delta rapidity | Directly validates central/forward category split |
+| Leading AK8 soft-drop mass | top-candidate mass scale/resolution and sideband shape |
+| Subleading AK8 soft-drop mass | second candidate; stability of the pass/fail split |
+| $m_{t\bar{t}}$ | the resonance spectrum (sidebands / fail region only while blind) |
+| $H_T$ | event-activity modeling and trigger-plateau assumption |
+| Jet rapidity / $\Delta y$ | central vs forward category behavior |
+| Top-tagger score | tagging modeling and working-point placement |
 
-## Status Matrix
+These are shown in the **antitag (fail)** region and in the pass-region top-mass
+**sidebands**, where signal contamination is negligible.
 
-| Region | Current status | Notes |
-| --- | --- | --- |
-| Fail/control central | To fill | Main QCD-dominated validation region |
-| Fail/control forward | To fill | Forward-region modeling check |
-| Pass/signal-like central | To fill | Review after background strategy is stable |
-| Pass/signal-like forward | To fill | Review after background strategy is stable |
+## Current status
 
-## Current Takeaway
+The strongest validation available right now is the **background-only goodness
+of fit** of the 2DAlphabet model, which probes whether data and the
+(QCD + $t\bar{t}$) prediction agree across the blinded $(m_t, m_{t\bar{t}})$ plane:
 
-Validation should be summarized as a small set of stable plots plus a clear
-watchlist, rather than a dump of every diagnostic figure.
+- Central `2x1`: $p = 0.485$
+- Forward `2x1` (with clamp-to-data): $p = 0.180$
 
-## Open Items
+Both pass, i.e. the model describes the sideband data well. The plots and method
+are on the [Background Estimation](background-estimation.md) page.
 
-- Add current Data/MC figures for the standard plot set.
-- Add pass/watchlist/follow-up labels after the next validation pass.
+| Region | Status |
+| --- | --- |
+| Fail/antitag, central | covered by the passing central GoF |
+| Fail/antitag, forward | covered by the passing forward GoF |
+| Pass sidebands, central/forward | included in the blinded fit; GoF passing |
+| Pass signal window | blinded |
+
+## Open items
+
+- Add standalone Data/MC overlays (soft-drop mass, $H_T$, $m_{t\bar{t}}$, $\Delta y$,
+  tagger score) for the antitag region and pass sidebands.
+- Add a measured 2024 top-tag scale factor; the current 0.90/tag placeholder is
+  the leading source of $t\bar{t}$ normalization uncertainty in these comparisons.

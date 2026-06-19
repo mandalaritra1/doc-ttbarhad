@@ -1,43 +1,73 @@
 # Selections
 
-## Objective
+## Event selection
 
-Present the object, event, and category selections used in the analysis flow.
-
-## Selection Sequence
-
-| Step | Purpose |
+| Step | Requirement (2024) |
 | --- | --- |
-| Event quality and trigger | Keep certified collision events passing the hadronic trigger path |
-| AK4 HT selection | Require high event activity |
-| AK8 candidate selection | Build two boosted top candidates |
-| Back-to-back topology | Suppress non-resonant and poorly reconstructed configurations |
-| Subjet/top-candidate quality | Keep candidates compatible with boosted top reconstruction |
-| Top-tag pass/fail split | Define signal-like and control-like categories |
-| Rapidity category split | Separate central and forward event topologies |
+| Lumi mask | golden JSON (data only) |
+| Trigger | `HLT_PFHT1050` |
+| MET filters | standard Run-3 set |
+| Event activity | AK4 $H_T > 1500$ GeV (AK4 jets $p_T > 30$ GeV, $|\eta| < 3.0$) |
+| AK8 kinematics | $\geq 2$ AK8 jets with $p_T > 400$ GeV, $|y| < 2.4$ |
+| Top-pair candidate | $|\Delta\phi(j_0,j_1)| > 2.1$ and both jets have two valid subjets |
 
-## Category Names
+The two leading-$p_T$ AK8 jets form the $t\bar{t}$ candidate. They are then
+ordered by top-tagger score: $j_0$ is the higher-score jet, $j_1$ the other.
 
-| Category | Meaning |
+## Top tagging
+
+The tagger is the **GloParT-v3 TopvsQCD** discriminant,
+
+$$D_{\mathrm{top}} = \frac{P_{\mathrm{TopbWqq}} + P_{\mathrm{TopbWq}}}{P_{\mathrm{TopbWqq}} + P_{\mathrm{TopbWq}} + P_{\mathrm{QCD}}}.$$
+
+2024 working points (campaign-dependent — keep explicit on plots):
+
+| WP | $D_{\mathrm{top}}$ threshold |
 | --- | --- |
-| `2tcen` | Two top-tag pass, central rapidity category |
-| `2tfwd` | Two top-tag pass, forward rapidity category |
-| `atcen` | Antitag/fail control, central rapidity category |
-| `atfwd` | Antitag/fail control, forward rapidity category |
+| loose | 0.6488 |
+| **medium (used for the tag)** | **0.8571** |
+| tight | 0.9284 |
 
-## Presentation Checklist
+A jet is "top-tagged" if $D_{\mathrm{top}} >$ medium **and** $105 < m_{\mathrm{SD}} < 210$ GeV.
 
-- Show one cutflow table for the current production.
-- Use one category naming convention everywhere.
-- Label top-tag working point and tagger branch on plots.
-- State whether the table is data, SM background, signal, or combined MC.
+## Pass / fail regions
 
-## Current Takeaway
+| Region | Definition |
+| --- | --- |
+| **Pass** (`2t`) | both $j_0$ and $j_1$ top-tagged (double tag) — signal-like |
+| **Fail** (`at`, antitag) | $j_0$ tagged; $j_1$ in the **antitag** window loose $< D_{\mathrm{top}} <$ medium, with the mass window — QCD-enriched |
 
-The selection page should make the category logic readable without exposing
-low-level processor details.
+The fail (antitag) region anchors the data-driven QCD template; the transfer
+function maps it into the pass region.
 
-## Open Items
+## Rapidity categories
 
-- Add the latest approved cutflow.
-- Confirm the top-tag working point text for the next slide round.
+The two-candidate rapidity separation $\Delta y = y(j_0) - y(j_1)$ splits events:
+
+| Category | Requirement |
+| --- | --- |
+| central | $|\Delta y| < 1.0$ |
+| forward | $|\Delta y| \geq 1.0$ |
+
+## Category names
+
+Crossing the two splits gives the four fit categories:
+
+| Category | Top-tag | Rapidity |
+| --- | --- | --- |
+| `2tcen` | pass (double tag) | central |
+| `2tfwd` | pass (double tag) | forward |
+| `atcen` | fail (antitag) | central |
+| `atfwd` | fail (antitag) | forward |
+
+Central and forward are fitted as separate 2DAlphabet workspaces and combined for
+the final limit.
+
+## Notes
+
+- Label the tagger branch (`globalParT3`) and working point on every figure: the
+  Run-3 top-tag definition is campaign-dependent.
+- AK4 JetID is currently not applied (Run-3 NanoAOD working point not yet
+  centrally validated).
+- A measured 2024 top-tag scale factor is still pending; the fits currently use a
+  placeholder of 0.90 per tag.

@@ -1,10 +1,9 @@
 # TTbarHadronic documentation
 
-This site tracks the presentation-ready state of the all-hadronic `ttbar`
-resonance analysis. It is organized for meetings: what the analysis is trying
-to measure, which phase space and samples are in use, how selections and
-validation are defined, how the background estimate is summarized, and where
-the latest results stand.
+Documentation for the search for heavy $t\bar{t}$ resonances ($Z'$, KK-gluon) in
+the **fully hadronic** final state with Run-3 **2024** data (109.95 fb⁻¹,
+13.6 TeV). Both boosted tops are reconstructed as AK8 jets; the QCD background is
+estimated from data with a pass/fail transfer function (2DAlphabet).
 
 ## Current Flow
 
@@ -20,16 +19,18 @@ the latest results stand.
 
 - [Meetings and progress tracker](meetings/recents.md)
 
-## Analysis Snapshot
+## Analysis Snapshot (2024)
 
-| Area | Current presentation status |
+| Area | State |
 | --- | --- |
-| Physics target | Boosted all-hadronic `ttbar` resonance topology |
-| Main objects | Two AK8 PUPPI top candidates, AK4 jets for event activity |
-| Baseline shape | High-HT, two-AK8, back-to-back topology |
-| Categories | Pass/fail top-tag regions and central/forward rapidity split |
-| Validation | Data/MC comparisons in control and analysis regions |
-| Background | Data-driven pass/fail transfer strategy, with SM `ttbar` from simulation |
+| Dataset | 2024, 109.95 fb⁻¹ (13.6 TeV) |
+| Topology | $H_T > 1500$ GeV; 2 AK8 jets $p_T>400$ GeV, $\|\Delta\phi\|>2.1$ |
+| Top tagger | GloParT-v3 TopvsQCD, medium WP 0.8571 |
+| Categories | double-tag pass / antitag fail × central ($\|\Delta y\|<1$) / forward |
+| Background | QCD from data (2DAlphabet, TF order `2x1`); $t\bar{t}$ from MC |
+| Goodness of fit | passing — central $p=0.485$, forward $p=0.180$ (blinded) |
+| Result | blinded expected exclusion **~5.3 TeV** ($Z'$, 1% width) |
+| Pending | measured 2024 top-tag SF, full systematics, unblinding |
 
 ## Notes For Presenters
 

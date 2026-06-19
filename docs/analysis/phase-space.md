@@ -1,38 +1,47 @@
 # Phase Space
 
-## Objective
+## Boosted all-hadronic topology
 
-Define the analysis phase space in a compact, presentation-ready way.
+The analysis selects events with two highly boosted, hadronically decaying top
+candidates, each reconstructed as one AK8 jet. The phase space is defined by the
+trigger, event activity, and the two leading AK8 jets.
 
-## Baseline Region
-
-The working phase space follows the boosted all-hadronic topology:
-
-| Requirement | Presentation definition |
+| Requirement | 2024 value |
 | --- | --- |
-| Final state | Fully hadronic `ttbar` candidate events |
-| AK8 candidates | At least two high-pt AK8 jets |
-| AK8 acceptance | Central detector acceptance, using rapidity-based selection |
-| Event activity | High AK4-based HT |
-| Topology | Two selected AK8 jets separated back-to-back in azimuth |
-| Candidate mass | Top-candidate soft-drop mass used for signal/control regions |
+| Trigger | `HLT_PFHT1050` |
+| Event activity | AK4 $H_T > 1500$ GeV (AK4 jets $p_T > 30$ GeV, $|\eta| < 3.0$) |
+| AK8 multiplicity | $\geq 2$ AK8 jets passing kinematics |
+| AK8 kinematics | $p_T > 400$ GeV, $|y| < 2.4$ |
+| Back-to-back | $|\Delta\phi(j_0, j_1)| > 2.1$ |
+| Subjet quality | both candidates have two valid soft-drop subjets |
+| Top mass window | $105 < m_{\mathrm{SD}} < 210$ GeV |
 
-## Region Logic
+The two top candidates $j_0, j_1$ are the two highest-$p_T$ AK8 jets; of those two,
+$j_0$ is defined as the one with the **higher** top-tagger score.
 
-| Region type | Purpose |
-| --- | --- |
-| Signal-like pass region | Events where both selected top candidates pass the top-tag selection |
-| Fail/control region | Events used to constrain QCD multijet behavior |
-| Sideband regions | Top-mass sidebands used to study transfer behavior |
-| Central category | Small rapidity separation between the two top candidates |
-| Forward category | Complement of the central rapidity category |
+## Observables
 
-## Current Takeaway
+| Observable | Definition | Range / binning |
+| --- | --- | --- |
+| $m_t$ | soft-drop mass of the AK8 top candidate | fit axis; signal window $105$–$210$ GeV |
+| $m_{t\bar{t}}$ | invariant mass $m(j_0 + j_1)$ | resonance observable, up to 6.5 TeV |
+| $\Delta y$ | $y(j_0) - y(j_1)$ | category split |
+| $\chi$ | $\exp(|\Delta y|)$ | angular discriminant |
 
-The phase-space definition should stay stable across meetings so that yield,
-validation, and background-estimation updates are comparable.
+## Region map
 
-## Open Items
+Events are classified in two independent dimensions: the **top-tag** outcome and
+the **rapidity** category.
 
-- Add the exact Run-3 values used in the current production pass.
-- Add a compact region map once the final plotting convention is chosen.
+| | Central ($|\Delta y| < 1.0$) | Forward ($|\Delta y| \geq 1.0$) |
+| --- | --- | --- |
+| **Pass** (both jets top-tagged) | `2tcen` | `2tfwd` |
+| **Fail** (antitag) | `atcen` | `atfwd` |
+
+Within each region the $m_t$ axis is further split into a low sideband, the
+top-mass **signal window** ($105$–$210$ GeV, blinded in the pass region), and a
+high sideband. The pass/fail and sideband structure is what the 2DAlphabet
+transfer function exploits to predict the QCD background.
+
+The central category targets the more centrally produced, low-$\Delta y$ signal;
+the forward category captures the complementary, more QCD-like topology.

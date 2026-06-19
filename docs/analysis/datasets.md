@@ -1,19 +1,19 @@
 # Datasets
 
-Last updated: 2026-04-17
+Last updated: 2026-06-18
 
 This analysis searches for heavy resonances decaying to top quark pairs in the all-hadronic final state. The dominant background is QCD multijet production, followed by SM $t\bar{t}$ production.
 
-Signal samples currently use $Z' \to t\bar{t}$ benchmark mass points. The active sample inventory comes from the `data/nanoAOD/*.json` sample maps used by the analysis workflow.
+Signal samples are $Z' \to t\bar{t}$ (1%, 10%, 30% width) and KK-gluon benchmarks. The sample inventory comes from the `data/nanoAOD/*.json` maps used by the analysis workflow. The current physics result uses the **2024** dataset.
 
-!!! note "Inventory status"
-    Cross sections, integrated luminosities, and selected yields still need to be confirmed.
+!!! note "Tagger branch"
+    Reconstruction uses the **GloParT-v3** top tagger (`globalParT3_*` NanoAOD branches). The Run-3 top-tag definition is campaign-dependent, so the NanoAOD version is kept explicit below.
 
 ## Data Samples
 
 ### 2023
 
-Luminosity: TBD
+Integrated luminosity: ~27 fb⁻¹ (value used in the workflow; 2023 is not the current analysis target).
 
 | Era | Dataset  |
 | --- | --- |
@@ -23,7 +23,7 @@ Luminosity: TBD
 
 ### 2024
 
-Luminosity: TBD
+Integrated luminosity: **109.95 fb⁻¹** (golden-JSON certified, 13.6 TeV) — the value used for MC normalization and on all 2024 plots.
 
 | Era | Dataset  |
 | --- | --- |
@@ -44,7 +44,18 @@ Luminosity: TBD
 | SM $t\bar{t}$ | 2023 | `inclusive` | `/TTto4Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer23NanoAODv12-JMENano12p5_132X_mcRun3_2023_realistic_v5-v1/NANOAODSIM` |
 | SM $t\bar{t}$ | 2024 | `inclusive` | `/TTto4Q_TuneCP5_13p6TeV_powheg-pythia8/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v2/NANOAODSIM` |
 
+`TTto4Q` is the all-hadronic $t\bar{t}$ sample, normalized with $\sigma = 350.6$ pb
+(inclusive $t\bar{t}$ 762.1 pb × all-hadronic branching fraction 0.46). In the
+current 2024 fits QCD is taken **data-driven** via the pass/fail method; the QCD MC
+above is for validation/closure (the $p_T$-binned QCD samples, with much higher
+statistics, are the likely choice for final validation).
+
 ## Signal Samples
+
+$Z' \to t\bar{t}$ samples exist at 1%, 10%, and 30% width (`ZPrime1/10/30.json`),
+plus KK-gluon, on a mass grid from 1 to ~9 TeV. The current limit uses the **1%
+width** points from 1 to 6 TeV (above ~6.5 TeV the resonance falls outside the
+$m_{t\bar{t}}$ fit window). A few representative datasets:
 
 | Model | Year | Mass point | Dataset |
 | --- | ---: | ---: | --- |
