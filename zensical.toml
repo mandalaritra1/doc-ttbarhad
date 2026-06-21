@@ -21,6 +21,7 @@ nav = [
         { "Phase Space" = "analysis/phase-space.md" },
         { "Datasets" = "analysis/datasets.md" },
         { "Selections" = "analysis/selections.md" },
+        { "Recombination Top-Tagger" = "analysis/recomb-top-tagger.md" },
         { "Data/MC Validation" = "analysis/datamc-validation.md" },
         { "Background Estimation" = "analysis/background-estimation.md" },
         { "Results" = "analysis/results.md" },

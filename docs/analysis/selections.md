@@ -30,6 +30,10 @@ $$D_{\mathrm{top}} = \frac{P_{\mathrm{TopbWqq}} + P_{\mathrm{TopbWq}}}{P_{\mathr
 
 A jet is "top-tagged" if $D_{\mathrm{top}} >$ medium **and** $105 < m_{\mathrm{SD}} < 210$ GeV.
 
+A learned **per-$p_T$ recombination** of the GloParT-v3 heads gives +3–4% signal
+efficiency at the same QCD mis-tag and is available as an opt-in tagger — see
+[Recombination Top-Tagger](recomb-top-tagger.md).
+
 ## Pass / fail regions
 
 | Region | Definition |
