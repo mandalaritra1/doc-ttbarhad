@@ -6,6 +6,28 @@ Meetings are grouped by year and month. Each meeting has its own page.
 <summary>2026</summary>
 
 <details open>
+<summary>June</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Meeting</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2026-06-25</td>
+      <td><a href="2026-06-25.md">Tagger recombination, topcolor σ×B, 2024 10/30%, 2025 added</a></td>
+      <td>tagger, topcolor, limits, 2025</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
+<details open>
 <summary>April</summary>
 
 <table>

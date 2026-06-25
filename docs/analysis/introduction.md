@@ -45,7 +45,8 @@ $m_{t\bar{t}}$.
 
 The full 2024 chain runs end to end **blinded**: transfer-function order selected
 by F-test (`2x1` central and forward), goodness-of-fit passing in both categories,
-and a combined expected exclusion of **~5.3 TeV** for a 1%-width $Z'$. See
+and a combined expected exclusion of **~4.84 TeV** for a 1%-width $Z'$ (built from
+a data-driven sideband-fit Asimov; supersedes an earlier ~5.3 TeV figure). See
 [Background Estimation](background-estimation.md) and [Results](results.md).
 
 Remaining before a final result: a measured 2024 top-tag scale factor, full

@@ -5,10 +5,11 @@
 Collect result-facing material only after selections, validation, background
 estimation, and systematic assumptions have a stable reviewed configuration.
 
-!!! info "Blinded expected result (2026-06-18)"
-    First end-to-end 2024 result: combined central + forward, transfer-function
-    order `2x1`, **blinded** (expected-only). Dataset 109.95 fb⁻¹ (13.6 TeV),
-    ZPrime → t̄t at 1% width.
+!!! info "Blinded expected result (2026-06-21, corrected)"
+    Combined central + forward, transfer-function order `2x1`, **blinded**
+    (expected-only). Dataset 109.95 fb⁻¹ (13.6 TeV), ZPrime → t̄t at 1% width.
+    The expected limit is now built from a **data-driven sideband-fit Asimov**
+    (see the note below); this supersedes the 2026-06-18 figure of ≈ 5.32 TeV.
 
 ## Current Status
 
@@ -16,17 +17,18 @@ estimation, and systematic assumptions have a stable reviewed configuration.
 | --- | --- |
 | 2024 background fit | Central and forward, order `2x1`, passing goodness-of-fit |
 | Transfer-function choice | **Selected: central `2x1`, forward `2x1`** (F-test) |
-| Combined limit | **Blinded expected, available below** |
+| Combined limit | **Blinded expected (snapshot Asimov), available below** |
 | Impacts | Blinded Asimov, available below |
-| Systematic inputs | Placeholder 2024 top-tag SF (0.90/tag); to be measured |
+| Systematic inputs | Placeholder 2024 top-tag SF (0.90/tag); only ~2 of ~8 systematics in the limit card yet |
 | Observed result | **Not unblinded** |
 
 ## Blinded Expected Limits
 
 Combined central + forward 95% CL upper limits on the ZPrime (1% width)
 production cross section, blinded (expected median and ±1σ/±2σ bands). The
-theory crosses the median expected limit at **≈ 5.32 TeV**, i.e. the expected
-exclusion reach is about 5.3 TeV.
+theory crosses the median expected limit at **≈ 4.84 TeV**, i.e. the expected
+exclusion reach is about 4.8 TeV. The bands are smooth and monotone across the
+full 1–6 TeV grid.
 
 ![ZPrime 1% width blinded expected limits](../assets/analysis/results/2024/limits_zprime_1pct.png)
 
@@ -36,13 +38,46 @@ exclusion reach is about 5.3 TeV.
 | Categories | central + forward, combined |
 | Transfer function | `2x1` (both) |
 | Mass range | 1–6 TeV (m_tt window ends at 6.5 TeV) |
-| Expected exclusion | ≈ 5.32 TeV (+0.28 / −0.32) |
+| Expected exclusion | ≈ 4.84 TeV |
 | Blinding | blinded (expected only) |
 
+!!! warning "Why the number changed (5.32 → 4.84 TeV)"
+    The earlier expected limit built its Asimov ("expected") dataset from the
+    **prefit** transfer function — i.e. before the TF was fit to the data
+    sidebands. For a data-driven QCD estimate that prefit TF is optimistically
+    biased, which both **inflated the expected reach** and produced unstable
+    median/−σ bands at 1.8–3.5 TeV (the reason the 1.8/2.0 TeV points were
+    previously dropped). The corrected procedure fits the background-only model to
+    data with the Pass signal window **masked** (so the analysis stays blinded),
+    saves that postfit **snapshot**, and builds the Asimov from it. The result is
+    the honest reach **≈ 4.84 TeV** with clean bands and **all mass points
+    recovered**, consistent with the independent 1D cross-check (≈ 4.5 TeV ≈ Run-2).
+
 !!! note "Mass coverage"
-    The 1.8 and 2.0 TeV points are omitted (point-specific instability in the
-    asymptotic −2σ band) and will be recovered with toy-based limits. Masses
+    All 13 mass points 1–6 TeV are now present (1.8/2.0 TeV recovered). Masses
     above ~6.5 TeV are outside the m_tt fit window.
+
+## Wider widths (10% and 30%)
+
+The same combined cen+fwd, `2x1`, blinded snapshot-Asimov chain, for the 10% and
+30% width benchmarks. The expected reach grows with width (a wider resonance has a
+larger production cross section), with clean bands across the grid.
+
+| Width | Expected exclusion |
+| --- | --- |
+| 1% | ≈ 4.84 TeV |
+| 10% | ≈ 5.91 TeV |
+| 30% | > 6 TeV (limit stays below theory across 1–6 TeV; reach beyond the grid edge) |
+
+![ZPrime 10% width blinded expected limits](../assets/analysis/results/2024/limits_zprime_10pct.png)
+
+![ZPrime 30% width blinded expected limits](../assets/analysis/results/2024/limits_zprime_30pct.png)
+
+!!! note "10/30 normalization"
+    The 10/30 signal templates are scaled per mass by their theory σ so the limit
+    fit stays numerically well-conditioned (signal strength r ~ O(1)); the plotted
+    σ×B|95 is independent of that scale. A single fixed-fb scale was found to break
+    the asymptotic band calculation at low mass and is not used.
 
 ## Impacts
 
@@ -78,8 +113,11 @@ Each future result entry should state:
 
 ## Current Takeaway
 
-The 2024 analysis has a complete **blinded** result chain: selected `2x1`
-transfer functions, passing goodness-of-fit, a combined expected limit reaching
-**≈ 5.3 TeV**, and a well-behaved impact ranking. Remaining before a final
-result: a measured 2024 top-tag scale factor, recovery of the 1.8/2.0 TeV
-points, full systematics, and unblinding approval.
+The 2024 analysis has a complete **blinded** result chain for all three widths:
+selected `2x1` transfer functions, passing goodness-of-fit, combined expected
+limits with clean ±1σ/±2σ bands across the full mass grid (**1% ≈ 4.84 TeV,
+10% ≈ 5.91 TeV, 30% > 6 TeV**), and a well-behaved impact ranking. The expected
+limits use a data-driven sideband-fit (snapshot) Asimov, which removed the earlier
+band instability and an optimistic bias in the reach. Remaining before a final
+result: propagating the full systematics into the limit card (only ~2 of ~8 enter
+today), a measured 2024 top-tag scale factor, and unblinding approval.

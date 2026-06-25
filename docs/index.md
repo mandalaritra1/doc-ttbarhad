@@ -29,7 +29,7 @@ estimated from data with a pass/fail transfer function (2DAlphabet).
 | Categories | double-tag pass / antitag fail × central ($\|\Delta y\|<1$) / forward |
 | Background | QCD from data (2DAlphabet, TF order `2x1`); $t\bar{t}$ from MC |
 | Goodness of fit | passing — central $p=0.485$, forward $p=0.180$ (blinded) |
-| Result | blinded expected exclusion **~5.3 TeV** ($Z'$, 1% width) |
+| Result | blinded expected exclusion **~4.84 TeV** ($Z'$, 1% width) |
 | Pending | measured 2024 top-tag SF, full systematics, unblinding |
 
 ## Notes For Presenters
