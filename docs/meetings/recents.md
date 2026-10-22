@@ -4,14 +4,15 @@
 
 2026-10-22
 
-No ttbarhad group meetings are recorded in `research-notes/meetings/ttbarhad/` after
-2026-06-25. Progress since then is on the analysis pages; each has a dated History
-section.
+No ttbarhad group meetings are recorded in `research-notes/meetings/ttbarhad/` between
+2026-06-25 and 2026-10-22. Progress in that gap is on the analysis pages; each has a dated
+History section.
 
 ## Recent meetings
 
 | Date | Meeting | Main outcome |
 | --- | --- | --- |
+| 2026-10-22 | [Top-pT reweighting update](2026-10-22.md) | TOP-23-008 recipe replaces the Run-2 data/POWHEG formula (why, before/after, sources); blinded fit pulls `toppt` −1.55σ; $t\bar t$ residual route open |
 | 2026-06-25 | [Tagger recombination, topcolor σ×B, 2024 10/30%, 2025 added](2026-06-25.md) | Proposed the recombination top-tagger (+3–4% eff); MadGraph topcolor σ×B (why "Par" masses are wrong); 2024 10/30% crossings; 2025 + combined fit wired |
 | 2026-06-22 | [All-width 2024 limits, topcolor theory, LHAPDF cross-check](2026-06-22.md) | Blinded limits for 1/10/30% with two theory lines; anchoring left open; why the limit seemed to depend on the signal scale |
 | 2026-04-16 | [Run-3 top tagger and QCD sample follow-up](2026-04-16.md) | Identified old Run-2 pass/fail score usage and pointed to the GlobalParT3 discriminator definition |
@@ -47,3 +48,4 @@ See the [meeting archive](all.md) for the year/month list.
 | --- | --- |
 | 2026-06-25 | Last update before the refresh (2026-06-25 meeting added) |
 | 2026-10-22 | 2026-06-22 meeting added; June action items closed out with their outcomes |
+| 2026-10-22 | 2026-10-22 meeting added (top-pT reweighting update) |

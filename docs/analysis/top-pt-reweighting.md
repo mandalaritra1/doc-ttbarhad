@@ -89,7 +89,8 @@ References (from the `top_pt_sf` docstring):
 
 - TOP PAG TWiki TopPtReweighting: <https://twiki.cern.ch/twiki/bin/viewauth/CMS/TopPtReweighting>
 - CMS AN-2024/019 v9, sec. 5.7, eqs. (3)–(4) and Fig. 25 (TOP-23-008, tW at 13.6 TeV):
-  <https://cms-alcm.web.cern.ch/notes/CMS-AN-2024-019/AN2024_019_v9.pdf>
+  note page <https://cmsfence.cern.ch/alcm/note/show-note-details?noteID=CMS%20AN-2024%2F019>,
+  PDF <https://cms-alcm.web.cern.ch/notes/CMS-AN-2024-019/AN2024_019_v9.pdf>
 - TOP-23-008 paper, sec. 7: arXiv:2409.06444
 - TOP PAG recommendation for Run 3 (CMS Talk, Oct 2025):
   <https://cms-talk.web.cern.ch/t/top-pt-reweighting-recommendations-for-run-3-analyses/133877>

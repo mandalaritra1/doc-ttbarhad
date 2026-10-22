@@ -6,6 +6,28 @@ Meetings are grouped by year and month. Each meeting has its own page.
 <summary>2026</summary>
 
 <details open>
+<summary>October</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Meeting</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2026-10-22</td>
+      <td><a href="2026-10-22.md">Top-pT reweighting update</a></td>
+      <td>top-pT, systematics, ttbar normalisation</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
+<details open>
 <summary>June</summary>
 
 <table>
