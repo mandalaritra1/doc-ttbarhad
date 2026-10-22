@@ -22,6 +22,11 @@ Meetings are grouped by year and month. Each meeting has its own page.
       <td><a href="2026-06-25.md">Tagger recombination, topcolor σ×B, 2024 10/30%, 2025 added</a></td>
       <td>tagger, topcolor, limits, 2025</td>
     </tr>
+    <tr>
+      <td>2026-06-22</td>
+      <td><a href="2026-06-22.md">All-width 2024 limits, topcolor theory, LHAPDF cross-check</a></td>
+      <td>limits, topcolor, theory</td>
+    </tr>
   </tbody>
 </table>
 
