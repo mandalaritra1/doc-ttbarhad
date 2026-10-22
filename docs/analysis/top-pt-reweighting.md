@@ -143,8 +143,8 @@ Points raised in the reviews to carry into the decision:
 ## Detailed studies
 
 - Skimmer `CHANGELOG_v1.1_to_v1.2.md`, item 35 and the 2026-10-02 decision-log entry.
-- Skimmer `plots/out/toppt_norm/` (review brief and the two reviews; these contain
-  unblinded Pass ratios and are for Aritra only).
+- Skimmer `plots/out/toppt_norm/` (review brief and the two reviews; internal, not for
+  this site).
 - toptag-sf-derivation `PLAN.md`, entry "2026-10-02 — Top-pT data/MC in the T&P",
   `results/toppt_datamc.py`, `outputs/toppt_datamc_2024_proxy.json`.
 - ai-wiki `wiki/repos/ttbarhadronic_skimmer.md`.
