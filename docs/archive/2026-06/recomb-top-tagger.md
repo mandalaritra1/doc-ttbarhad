@@ -1,5 +1,10 @@
 # GloParT-v3 recombination top-tagger
 
+!!! warning "Archived: superseded"
+    GloParT-v3 recombination tagger study, June 2026, kept unchanged for the record (site tag `pre-refresh-2026-10-22`).
+    Superseded: June 2026: not adopted. The analysis tags with the baseline TopvsQCD score at the tight WP (0.9284); the June comparison showed no expected-limit gain from the recombination.
+    Current version: [the top-tag scale factor page](../../analysis/top-tag-scale-factors.md).
+
 An alternative boosted-top tagger that replaces the hand-built baseline ratio with
 a **learned, per-$p_T$ recombination** of the raw GloParT-v3 class heads. It gives
 a higher signal efficiency at the **same** QCD mis-tag, while staying decorrelated
@@ -82,7 +87,7 @@ the signal (boosted-top) efficiency across the whole boosted regime:
 cross-check stays at/below baseline (the log features are non-Gaussian), so the
 logistic fit is the one used.
 
-![Signal efficiency at 0.5% QCD mis-tag versus AK8 pT — baseline, LDA, and logistic recombination (2024); logistic gains +3–7% across the boosted regime](../assets/analysis/recomb-top-tagger/money_sigeff_vs_pt.png)
+![Signal efficiency at 0.5% QCD mis-tag versus AK8 pT — baseline, LDA, and logistic recombination (2024); logistic gains +3–7% across the boosted regime](../../assets/analysis/recomb-top-tagger/money_sigeff_vs_pt.png)
 
 ## Mass decorrelation
 
@@ -92,7 +97,7 @@ jet $m_{\mathrm{SD}}$: the recombination is **as flat as the baseline** in every
 $p_T$ bin (constant-fit $\chi^2/\mathrm{ndf}\sim\mathcal{O}(1)$, negligible slope),
 so the efficiency gain is not bought by carving the QCD mass peak.
 
-![QCD mis-tag versus jet m_SD at the fixed working point, baseline versus recombination (2024); both flat, the recombination does not sculpt the QCD mass peak](../assets/analysis/recomb-top-tagger/decorr_vs_msd.png)
+![QCD mis-tag versus jet m_SD at the fixed working point, baseline versus recombination (2024); both flat, the recombination does not sculpt the QCD mass peak](../../assets/analysis/recomb-top-tagger/decorr_vs_msd.png)
 
 ## Usage
 

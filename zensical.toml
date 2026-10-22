@@ -21,7 +21,6 @@ nav = [
         { "Phase Space" = "analysis/phase-space.md" },
         { "Datasets" = "analysis/datasets.md" },
         { "Selections" = "analysis/selections.md" },
-        { "Recombination Top-Tagger" = "analysis/recomb-top-tagger.md" },
         { "Data/MC Validation" = "analysis/datamc-validation.md" },
         { "Corrections and Uncertainties" = [
             { "Systematic Uncertainties" = "analysis/uncertainties.md" },
@@ -30,6 +29,20 @@ nav = [
         ] },
         { "Background Estimation" = "analysis/background-estimation.md" },
         { "Results" = "analysis/results.md" },
+    ] },
+    { "Archive" = [
+        { "About the Archive" = "archive/index.md" },
+        { "June 2026 (2024 only)" = [
+            { "Front Page" = "archive/2026-06/index.md" },
+            { "Introduction" = "archive/2026-06/introduction.md" },
+            { "Phase Space" = "archive/2026-06/phase-space.md" },
+            { "Datasets" = "archive/2026-06/datasets.md" },
+            { "Selections" = "archive/2026-06/selections.md" },
+            { "Data/MC Validation" = "archive/2026-06/datamc-validation.md" },
+            { "Background Estimation (2024 F-test)" = "archive/2026-06/background-estimation.md" },
+            { "Results (2024 expected limits)" = "archive/2026-06/results.md" },
+            { "Recombination Top-Tagger" = "archive/2026-06/recomb-top-tagger.md" },
+        ] },
     ] },
     { "Meetings" = [
         { "Recents" = "meetings/recents.md" },
