@@ -1,7 +1,6 @@
 # Results
 
 !!! info "Status"
-    <!-- STATUS-LINE-PENDING: wording to be chosen by Aritra -->
     Blinded expected limits only. Provisional: the transfer function is constant in every
     year-region and the $t\bar t$ normalisation is still open.
 
