@@ -102,8 +102,10 @@ all-hadronic and 1ℓ channels and covered it with uncertainties.
 ## Open decision
 
 With the new recipe the $t\bar t$ MC is above the data, and the masked
-background-only Run-3 fit pulls `toppt` towards its down variation (a stronger
-correction) together with `ttag_band_hipt` and the per-year $t\bar t$ rates. Two
+background-only Run-3 fit pulls `toppt` by −1.55σ, towards its down variation (a stronger
+correction), together with `ttag_band_hipt` (−1.7σ) and the per-year $t\bar t$ rates
+(tracker item `ttbar-norm-run3`, 2026-10-22). The Run-3 combination keeps the TOP recipe
+with a $t\bar t$ rate per year as its working default (decision 2026-10-04). Two
 reviews of 2026-10-02 (Fable 5.1 and GPT-6-Astra, skimmer `plots/out/toppt_norm/`)
 looked at the nominal choice. The options:
 
@@ -146,3 +148,13 @@ Points raised in the reviews to carry into the decision:
 - toptag-sf-derivation `PLAN.md`, entry "2026-10-02 — Top-pT data/MC in the T&P",
   `results/toppt_datamc.py`, `outputs/toppt_datamc_2024_proxy.json`.
 - ai-wiki `wiki/repos/ttbarhadronic_skimmer.md`.
+
+## History
+
+| Date | Change | Reference |
+| --- | --- | --- |
+| v1 to v1.2 (to 2026-10-01) | Run-2 data/POWHEG formula on the two reco AK8 jets, no cap, no uncertainty | `git show 4b2a2b6^:python/corrections.py` |
+| 2026-10-02 | TOP-23-008 recipe on gen last-copy tops with the `toppt` nuisance (mean $t\bar t$ weight 0.75 → 0.92) | skimmer `4b2a2b6`, changelog item 35 |
+| 2026-10-02 | Two reviews of the $t\bar t$ normalisation and top-$p_T$ options | skimmer `plots/out/toppt_norm/` |
+| 2026-10-04 | Run-3 combination: TOP recipe with a per-year $t\bar t$ rate as the working default | tracker decision log |
+| 2026-10-22 | Still open: fit pulls `toppt` −1.55σ; to be settled with the $t\bar t$ normalisation | tracker `toppt-rw`, `ttbar-norm-run3` |

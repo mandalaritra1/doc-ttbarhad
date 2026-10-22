@@ -127,23 +127,6 @@ drift. The TF and Fail-bin parameters come on top. The 2024 + 2025 fit before th
 Run-3 model had 9 nuisances: `lumi24`, `lumi25`, `ttbar_xsec`, `jes`, `jer`,
 `pileup`, `pdf`, `q2`, `ttag_pt1`.
 
-## History
-
-| Date | Change | Commit |
-| --- | --- | --- |
-| 2026-07-31 | First measured 2024 top-tag SFs replace the flat placeholder | skimmer `32cdded` |
-| 2026-09-24 | `ttag_pt2`, `ttag_pt3` reach the templates (were lost in the axis overflow, only `TTAG_PT1` existed) | `d664e04` |
-| 2026-09-24 | `jms` 1%, `jmr` 2%; JES/JER propagated to $m_{SD}$ | `d3fbc3e` |
-| 2026-09-24 | $m_{SD}$ rebuilt from re-corrected subjets | `e922747` |
-| 2026-09-24 | `q2`, `pdf` normalised to the generator-level sum of weights | `5bcdf08` |
-| 2026-09-24 | `isr`, `fsr` added | `13dc1e3` |
-| 2026-09-24 | Top-tag SF uncertainty doubled above 1.2 TeV | `571526c` |
-| 2026-10-01 | Top-tag SFs on fully merged tops only; `ttag_nonmerged` | `e975cdc`, `f3c1965` |
-| 2026-10-02 | `ttag_band_hipt`, `ttag_flep_tag/band`, `toppt` | `6ed19bc`, `c34dbd1`, `4b2a2b6` |
-| 2026-10-02/03 | Derived pileup weights for the 2022/23 Z′ and for 2026 | `c7c1365`, `d939c67` |
-| 2026-10-03 | `ttag_drift_*` for 2026 | `5de1df9` |
-| 2026-10-04 | Run-3 correlation model (per-year rate, JES/JER per campaign, `ttag_yr22/23`) | bgestimation `011ad5c` |
-
 ## Open issues
 
 - **PDF prescription.** `std/mean` over the members is the replica formula; the set
@@ -175,3 +158,20 @@ Run-3 model had 9 nuisances: `lumi24`, `lumi25`, `ttbar_xsec`, `jes`, `jer`,
 - ai-wiki `wiki/repos/ttbarhadronic_skimmer.md`, `wiki/repos/ttbarhadronic_bgestimation.md`.
 - Methods deck "New methods in skimmer v1.2.1", 2026-10-04 (claude.ai artifact
   `WQYNFWgY6oRbpUYX42K3L6`).
+
+## History
+
+| Date | Change | Commit |
+| --- | --- | --- |
+| 2026-07-31 | First measured 2024 top-tag SFs replace the flat placeholder | skimmer `32cdded` |
+| 2026-09-24 | `ttag_pt2`, `ttag_pt3` reach the templates (were lost in the axis overflow, only `TTAG_PT1` existed) | `d664e04` |
+| 2026-09-24 | `jms` 1%, `jmr` 2%; JES/JER propagated to $m_{SD}$ | `d3fbc3e` |
+| 2026-09-24 | $m_{SD}$ rebuilt from re-corrected subjets | `e922747` |
+| 2026-09-24 | `q2`, `pdf` normalised to the generator-level sum of weights | `5bcdf08` |
+| 2026-09-24 | `isr`, `fsr` added | `13dc1e3` |
+| 2026-09-24 | Top-tag SF uncertainty doubled above 1.2 TeV | `571526c` |
+| 2026-10-01 | Top-tag SFs on fully merged tops only; `ttag_nonmerged` | `e975cdc`, `f3c1965` |
+| 2026-10-02 | `ttag_band_hipt`, `ttag_flep_tag/band`, `toppt` | `6ed19bc`, `c34dbd1`, `4b2a2b6` |
+| 2026-10-02/03 | Derived pileup weights for the 2022/23 Z′ and for 2026 | `c7c1365`, `d939c67` |
+| 2026-10-03 | `ttag_drift_*` for 2026 | `5de1df9` |
+| 2026-10-04 | Run-3 correlation model (per-year rate, JES/JER per campaign, `ttag_yr22/23`) | bgestimation `011ad5c` |

@@ -1,123 +1,77 @@
 # Results
 
-## Objective
+!!! info "Status"
+    <!-- STATUS-LINE-PENDING: wording to be chosen by Aritra -->
+    Blinded expected limits only. Provisional: the transfer function is constant in every
+    year-region and the $t\bar t$ normalisation is still open.
 
-Collect result-facing material only after selections, validation, background
-estimation, and systematic assumptions have a stable reviewed configuration.
+## Run-3 blinded expected limits (2022–2026)
 
-!!! info "Blinded expected result (2026-06-21, corrected)"
-    Combined central + forward, transfer-function order `2x1`, **blinded**
-    (expected-only). Dataset 109.95 fb⁻¹ (13.6 TeV), ZPrime → t̄t at 1% width.
-    The expected limit is now built from a **data-driven sideband-fit Asimov**
-    (see the note below); this supersedes the 2026-06-18 figure of ≈ 5.32 TeV.
+Expected 95% CL upper limits on $\sigma(pp \to Z') \times \mathcal{B}(Z' \to t\bar t)$ from
+the five-year 2DAlphabet fit, built from the masked background-only fit snapshot
+(`AsymptoticLimits --run blind`).
 
-## Current Status
-
-| Input | Status |
+| Item | Value |
 | --- | --- |
-| 2024 background fit | Central and forward, order `2x1`, passing goodness-of-fit |
-| Transfer-function choice | **Selected: central `2x1`, forward `2x1`** (F-test) |
-| Combined limit | **Blinded expected (snapshot Asimov), available below** |
-| Impacts | Blinded Asimov, available below |
-| Systematic inputs | Placeholder 2024 top-tag SF (0.90/tag); only ~2 of ~8 systematics in the limit card yet |
-| Observed result | **Not unblinded** |
+| Data | 2022–2026, 307.5 fb⁻¹, 13.6 TeV |
+| Inputs | skimmer v1.2.1, EOS `2dAlphabetInputs/v1.2.1/run3_combined/` |
+| Model | 20 regions, constant TF per year-region, 39 nuisances ([Background estimation](background-estimation.md)) |
+| Signal | Z′ → $t\bar t$, $\Gamma/M$ = 1, 10, 30%; 1.2–6 TeV (campaign `lim_run3_min`) and 7–9 TeV (`lim_run3_min_hm`) |
+| Fit gates | all points pass (36/36 at 1.2–6 TeV, 9/9 at 7–9 TeV) |
 
-## Blinded Expected Limits
+Above the end of the $m_{t\bar t}$ axis (6.5 TeV) only the in-range, mostly off-shell part
+of the signal enters: 85–93% of the selected 1%-width signal at 7–9 TeV (2024), ≥ 98% for
+10% and 30%.
 
-Combined central + forward 95% CL upper limits on the ZPrime (1% width)
-production cross section, blinded (expected median and ±1σ/±2σ bands). The
-theory crosses the median expected limit at **≈ 4.84 TeV**, i.e. the expected
-exclusion reach is about 4.8 TeV. The bands are smooth and monotone across the
-full 1–6 TeV grid.
+### Expected mass reach
 
-![ZPrime 1% width blinded expected limits](../assets/analysis/results/2024/limits_zprime_1pct.png)
+| Expected reach [TeV] | 1% | 10% | 30% |
+| --- | --- | --- | --- |
+| **Run 3 0ℓ, Run-2-equivalent theory** | **4.61** | **5.88** | **7.40** |
+| Run 2 0ℓ expected (B2G-25-009) | 4.27 | 5.58 | 6.48 |
+| Run 2 0ℓ + 1ℓ + 2ℓ expected (B2G-25-009) | 4.41 | 5.98 | 7.16 |
 
-| Quantity | Value |
-| --- | --- |
-| Signal | ZPrime → t̄t, 1% width |
-| Categories | central + forward, combined |
-| Transfer function | `2x1` (both) |
-| Mass range | 1–6 TeV (m_tt window ends at 6.5 TeV) |
-| Expected exclusion | ≈ 4.84 TeV |
-| Blinding | blinded (expected only) |
+Provisional until the $t\bar t$ normalisation and the transfer function are validated.
 
-!!! warning "Why the number changed (5.32 → 4.84 TeV)"
-    The earlier expected limit built its Asimov ("expected") dataset from the
-    **prefit** transfer function — i.e. before the TF was fit to the data
-    sidebands. For a data-driven QCD estimate that prefit TF is optimistically
-    biased, which both **inflated the expected reach** and produced unstable
-    median/−σ bands at 1.8–3.5 TeV (the reason the 1.8/2.0 TeV points were
-    previously dropped). The corrected procedure fits the background-only model to
-    data with the Pass signal window **masked** (so the analysis stays blinded),
-    saves that postfit **snapshot**, and builds the Asimov from it. The result is
-    the honest reach **≈ 4.84 TeV** with clean bands and **all mass points
-    recovered**, consistent with the independent 1D cross-check (≈ 4.5 TeV ≈ Run-2).
+### Theory line
 
-!!! note "Mass coverage"
-    All 13 mass points 1–6 TeV are now present (1.8/2.0 TeV recovered). Masses
-    above ~6.5 TeV are outside the m_tt fit window.
+The reach is quoted against a Run-2-equivalent Z′ cross section at 13.6 TeV: the
+B2G-25-009 theory curve from HEPData (record ins3134005, Fig. 15a/b/c, 13 TeV) times
+$\sigma(13.6)/\sigma(13)$ per mass and width from MadGraph LO topcolor scans at both
+energies (same couplings and PDF, so the coupling normalisation cancels). The ratio is
+1.09–1.30 for 1% width and at most 1.20 / 1.16 for 10% / 30%. An analytic Breit–Wigner ×
+parton-luminosity check agrees to 1–3%.
 
-## Wider widths (10% and 30%)
+File: bgestimation `run3/run3comb/theory/theory_run2equiv_136tev.json` (builder
+`build_run2equiv_theory.py`), the default of `jsons/signal_xs.json` since 2026-10-13. The
+older `signal_xs.json` line mixed conventions (1% = XSDB 13.6 TeV LO, 30% = unscaled Run-2
+13 TeV) and gave 4.25 / 5.58 / 7.03 TeV with the same limits.
 
-The same combined cen+fwd, `2x1`, blinded snapshot-Asimov chain, for the 10% and
-30% width benchmarks. The expected reach grows with width (a wider resonance has a
-larger production cross section), with clean bands across the grid.
+The Run-2 benchmark is about 5× our MadGraph topcolor cross section (5.1 / 5.5 / 5.9 for
+1 / 10 / 30%, ±10% in mass); the cause is not understood, and the overlay-anchoring question
+was closed on 2026-10-13 by using the Run-2 curve directly.
 
-| Width | Expected exclusion |
-| --- | --- |
-| 1% | ≈ 4.84 TeV |
-| 10% | ≈ 5.91 TeV |
-| 30% | > 6 TeV (limit stays below theory across 1–6 TeV; reach beyond the grid edge) |
+### Figures
 
-![ZPrime 10% width blinded expected limits](../assets/analysis/results/2024/limits_zprime_10pct.png)
+Limit plots exist (`plot_limits_mpl.py --year Run3 --lumi 307.5 --theory-json
+run3/run3comb/theory/theory_run2equiv_136tev.json`, research-notes
+`ttbarhadronic_run3_reach_run2_equivalent_theory`) and will be added here once approved
+for this site.
 
-![ZPrime 30% width blinded expected limits](../assets/analysis/results/2024/limits_zprime_30pct.png)
+## What is still open
 
-!!! note "10/30 normalization"
-    The 10/30 signal templates are scaled per mass by their theory σ so the limit
-    fit stays numerically well-conditioned (signal strength r ~ O(1)); the plotted
-    σ×B|95 is independent of that scale. A single fixed-fb scale was found to break
-    the asymptotic band calculation at low mass and is not used.
+- $t\bar t$ normalisation and top-$p_T$ treatment ([Top-pT reweighting](top-pt-reweighting.md#open-decision)).
+- Transfer function beyond a constant; toy calibration of the F-test; TF positivity.
+- Coverage at 30% width, 4 TeV (Feldman–Cousins intervals).
+- 2022/23 signal from an official NanoAODv15 sample; 2022/23 top-tag SF transfer.
+- PDF Hessian prescription, JES sources, template statistics, luminosity correlations.
 
-## Impacts
+## History
 
-Nuisance-parameter impacts on the signal strength (blinded Asimov, 3 TeV
-benchmark). The fit recovers r̂ ≈ 1.00 ± 0.13; the t̄t cross section and pileup
-lead, with the transfer-function parameters contributing moderately — the
-result is statistics / background-estimation dominated.
-
-![Blinded impact ranking at 3 TeV](../assets/analysis/results/2024/impacts_zprime3000.png)
-
-## Readiness Conditions
-
-Before adding result distributions or limits:
-
-1. Freeze the central and forward transfer-function choices.
-2. Validate the nested F-test comparisons and degrees of freedom.
-3. Correct 2024 luminosity and collision-energy labels in fit plots.
-4. Complete closure, GOF, fit-quality, and nuisance checks.
-5. Confirm the systematic model and the intended blinding/unblinding state.
-6. Record the exact input production and saved `runConfig.json` files.
-
-## Result Presentation
-
-Each future result entry should state:
-
-- configuration and production date;
-- dataset and luminosity;
-- category or combination;
-- transfer-function choice and justification;
-- systematic model;
-- blinding state;
-- whether the figure is work in progress, under review, or approved.
-
-## Current Takeaway
-
-The 2024 analysis has a complete **blinded** result chain for all three widths:
-selected `2x1` transfer functions, passing goodness-of-fit, combined expected
-limits with clean ±1σ/±2σ bands across the full mass grid (**1% ≈ 4.84 TeV,
-10% ≈ 5.91 TeV, 30% > 6 TeV**), and a well-behaved impact ranking. The expected
-limits use a data-driven sideband-fit (snapshot) Asimov, which removed the earlier
-band instability and an optimistic bias in the reach. Remaining before a final
-result: propagating the full systematics into the limit card (only ~2 of ~8 enter
-today), a measured 2024 top-tag scale factor, and unblinding approval.
+| Date | Result | Reference |
+| --- | --- | --- |
+| 2026-06-18 → 06-25 | 2024 blinded expected limits, 1% reach 4.84 TeV (XSDB line), then 2025 and 2024 + 2025, on inputs with a stale loose WP, a 0.90/tag placeholder SF and 2 nuisances. Superseded 2026-07-23 | [June results](../archive/2026-06/results.md) |
+| 2026-08-14 | 2024 + 2025 tight WP, fine grid 1.2–7 TeV × 3 widths, 9 nuisances, cen 2×2 / fwd 2×0; expected reach 4.66 (1%) / 6.16 TeV (10%) against `signal_xs.json` | research-notes `ttbarhadronic_tightwp_2425_finegrid_result`, bgestimation `1085d9a` |
+| 2026-10-04 | Run-3 2022–2026, constant TF, 39 nuisances; 4.25 / 5.58 / 7.03 TeV against `signal_xs.json` | bgestimation `011ad5c` |
+| 2026-10-08 | 7–9 TeV points added; blinded validation | tracker `run3-7to9tev`, `run3-validation` |
+| 2026-10-13 | Run-2-equivalent theory line: 4.61 / 5.88 / 7.40 TeV | bgestimation `2dd07f4`, `9567d35` |

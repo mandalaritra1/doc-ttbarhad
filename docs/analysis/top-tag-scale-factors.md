@@ -150,6 +150,32 @@ The ±25% for non-merged jets is a flat choice (decision of 2026-10-01). Before 
 $f_{lep}$ cut, 93–95% of the non-merged tagged or antitag Z′ jets at 2 TeV held the W
 lepton.
 
+## Open issues
+
+- **Band SF above 600 GeV** is interim: the T&P re-run with a Poisson likelihood, 2025
+  data, $f_{lep}$ on the probes and a constrained partially merged component is to
+  replace it. The Run-3 masked fit pulls `ttag_band_hipt` by −1.7σ (tracker
+  item `ttbar-norm-run3`, 2026-10-22).
+- **Tight/band covariance.** The T&P fit correlation is not used; tight and band SF of a
+  bin move together in `ttag_pt<i>`.
+- **2022/2023.** No T&P on Summer22/23 MC. The flat 25% `ttag_yr22/23` on the signal is
+  provisional, and $t\bar t$ has no equivalent term (its per-year rate floats).
+- **2026.** Re-measure the drift on the full certified 2026 data; decide on the
+  CMSSW_16_0_6 runs.
+- **Per-year working points.** 2022–2026 use the 2024 thresholds.
+- **Non-merged jets.** ±25% is a flat assignment, not a measurement.
+- **Electron channel.** The T&P uses muons only.
+
+## Detailed studies
+
+- `toptag-sf-derivation`: README (method, workflow, invariants), PLAN.md progress log
+  (2026-09-24 band fit, 2026-10-02 SF_flep, 2026-10-03 drift and release periods).
+- Skimmer `CHANGELOG_v1.1_to_v1.2.md`: items 1, 7, 18, 31–36, 40 and the decision log.
+- Skimmer `plots/out/ttag2026/` (drift reviews), `plots/out/flepsf/` (SF_flep reviews).
+- research-notes `topics/glopartv3_toptag_sf_p0_2024.md`,
+  `topics/glopartv3_flep_sf_2024.md`, `topics/ttbarhadronic_leptonic_tops_in_toptag.md`.
+- ai-wiki `wiki/topics/toptag_sf_measurement.md`.
+
 ## History
 
 | Date | State | Commit |
@@ -171,28 +197,3 @@ The band SF is measured directly. Building it from the medium and tight SFs,
 $(\mathrm{SF}_M\varepsilon_M - \mathrm{SF}_T\varepsilon_T)/(\varepsilon_M - \varepsilon_T)$,
 subtracts two nearly equal numbers (about 10% of tops sit in the band) and gives
 ±0.8–1.2.
-
-## Open issues
-
-- **Band SF above 600 GeV** is interim: the T&P re-run with a Poisson likelihood, 2025
-  data, $f_{lep}$ on the probes and a constrained partially merged component is to
-  replace it. The Run-3 masked fit pulls `ttag_band_hipt` down.
-- **Tight/band covariance.** The T&P fit correlation is not used; tight and band SF of a
-  bin move together in `ttag_pt<i>`.
-- **2022/2023.** No T&P on Summer22/23 MC. The flat 25% `ttag_yr22/23` on the signal is
-  provisional, and $t\bar t$ has no equivalent term (its per-year rate floats).
-- **2026.** Re-measure the drift on the full certified 2026 data; decide on the
-  CMSSW_16_0_6 runs.
-- **Per-year working points.** 2022–2026 use the 2024 thresholds.
-- **Non-merged jets.** ±25% is a flat assignment, not a measurement.
-- **Electron channel.** The T&P uses muons only.
-
-## Detailed studies
-
-- `toptag-sf-derivation`: README (method, workflow, invariants), PLAN.md progress log
-  (2026-09-24 band fit, 2026-10-02 SF_flep, 2026-10-03 drift and release periods).
-- Skimmer `CHANGELOG_v1.1_to_v1.2.md`: items 1, 7, 18, 31–36, 40 and the decision log.
-- Skimmer `plots/out/ttag2026/` (drift reviews), `plots/out/flepsf/` (SF_flep reviews).
-- research-notes `topics/glopartv3_toptag_sf_p0_2024.md`,
-  `topics/glopartv3_flep_sf_2024.md`, `topics/ttbarhadronic_leptonic_tops_in_toptag.md`.
-- ai-wiki `wiki/topics/toptag_sf_measurement.md`.

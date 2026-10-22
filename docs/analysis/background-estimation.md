@@ -1,249 +1,99 @@
-# Background Estimation
+# Background estimation
 
-## Objective
+## Method
 
-Summarize the current Run-3 2024 2DAlphabet background model, the completed
-transfer-function scan, and the checks still required before the model is
-frozen.
+QCD multijet production dominates every region and is taken from data with 2DAlphabet.
+SM $t\bar t$ (TTto4Q) and the Z′ signal come from simulation with their templates and
+nuisances ([Systematic uncertainties](uncertainties.md)).
 
-## Method Summary
+For each year $yy$ and category (`Cen`, `Fwd`):
 
-The dominant background is QCD multijet production. QCD is derived from data
-with a pass/fail construction, while SM `ttbar` is included from simulation.
+- **Fail**: the QCD template is one free parameter per bin (`QCD_<Cat><yy>Fail`), seeded
+  with data minus $t\bar t$.
+- **Pass**: QCD$_{\mathrm{Pass}}(x, y)$ = QCD$_{\mathrm{Fail}}(x, y) \times R_{P/F}(x, y)$, with
+  $x = m_t$ and $y = m_{t\bar t}$ scaled to [0, 1].
+- The transfer function is a product of polynomials,
 
-| Component | Role |
+  $$R_{P/F}(x, y) = 0.1\,\Big(p_0 + \sum_{i=1}^{n_x} p_i\, x^i\Big)\Big(1 + \sum_{j=1}^{n_y} p_{n_x + j}\, y^j\Big),$$
+
+  order "$n_x$×$n_y$", parameters `QCD_<Cat><yy>rpf_par<i>` with $p_0 \in [0.001, 50]$ and
+  $p_{i>0} \in [-50, 50]$.
+
+The Pass top-mass window (105–210 GeV) is masked in every background-only fit, so the
+Pass prediction there comes only from Fail and the Pass sidebands.
+
+## Run-3 model (2022–2026)
+
+| Item | Choice |
 | --- | --- |
-| Fail region | QCD-enriched control sample |
-| Pass region | Signal-like sample after the top-tag requirement |
-| Top-candidate mass sidebands | Constrain the fail-to-pass behavior outside the signal window |
-| Transfer function, \(R_{\mathrm{p/f}}(x,y)\) | Maps the fail-region QCD model into the pass region |
-| SM `ttbar` | Simulated background included in the fit |
-| Signal template | `signalRSGluon4000`, used to construct a standard signal-plus-background card |
+| Channels | 5 years × {Cen, Fwd} × {Pass, Fail} = 20 regions, one card |
+| Sub-eras | 2022 preEE + postEE and 2023 preBPix + postBPix summed before the fit (one TF per calendar year) |
+| Transfer functions | One per year and category (10). **Constant (0×0) in every year-region for the current limits** |
+| $t\bar t$ rate | `ttbar_xsec<yy>`, lnN 30% per year |
+| Nuisances | 39 (per year, correlated, 2026-only); list on [Systematic uncertainties](uncertainties.md) |
+| Fit | masked background-only `MultiDimFit`, all nuisances floating, $r = 0$ frozen, strategy 2 with fallbacks 1 and 0 |
+| Gates | status 0, covQual 3, EDM < 0.01, every card nuisance present and floating |
+| Limits | `AsymptoticLimits --run blind` from the masked-fit snapshot |
 
-The 2024 binning has 11 top-candidate-mass intervals and 15
-\(m_{t\bar{t}}\) intervals. Central and forward rapidity categories are fitted
-separately.
+Code: bgestimation branch `run3-v121`: `ttbar.py` (model), `run3/run3comb/make_run3_configs.py`
+(configs), `run3/run3comb/fit_job.sh` (fit and limit recipe), `run3/run3comb/condor_campaign.py`.
 
-## Current 2024 Implementation
+### Transfer-function order: constant, provisional
 
-| Item | Current state |
+The per-year F-test (2026-10-04) fits every order per year with the full model on the
+masked data. Each order starts from the 0×0 solution so nested orders cannot land above
+it; χ² is the saturated GoF at the fit minimum; `ftest_select.py` steps up one parameter
+at a time while p < 0.05.
+
+| Bins used | 2022 | 2023 | 2024 | 2025 | 2026 |
+| --- | --- | --- | --- | --- | --- |
+| n = 210 (all unmasked bins), cen | 0×1 | 0×1 | 2×2 | 0×1 | 0×0 |
+| n = 210, fwd | 1×0 | 0×1 | 2×0 | 0×0 | 0×0 |
+| n = 45 (Pass sidebands only) | 0×0 in 9 of 10 year-regions; fwd 2024 prefers 1×0 (p = 0.014) | | | | |
+
+2024 reproduces the August choice (cen 2×2, fwd 2×0). In the combined five-year fit,
+however, the F-test picks and a uniform 2×2/2×0 fail the convergence gates, so the
+production limits use a constant TF everywhere. This is forced by convergence, not
+selected by the F-test, and two reviews (2026-10-04 and 2026-10-08) asked for it to be
+presented as provisional. The F-test p-values are analytic; a toy calibration is open.
+
+### Blinded validation (2026-10-08)
+
+| Check | Result |
 | --- | --- |
-| Categories | `cen2024`, `fwd2024` |
-| Candidate forms | `0x0`, `0x1`, `0x2`, `1x0`, `1x1`, `1x2`, `2x1`, `2x2` |
-| Fit areas | 16 total: eight forms in each category |
-| Pairwise outputs | 25 stored comparisons per category; equal-parameter pairs are skipped |
-| Postfit projections | Available for every tested candidate |
-| **Selected nominal order** | **Central `2x1`; forward `2x1`** (F-test selected) |
-| Final model-selection status | **Selected and passing goodness-of-fit** (blinded); see below |
+| Masked saturated GoF, 200 toys | p = 0.27 |
+| Closure (background-only Asimov) | $|\hat r| \leq 0.07\, r_{95}$ |
+| Asimov signal injection | fitted/injected slopes 1.05–1.09 |
+| Toy injection at $1 \times r_{95}$ | fine at 1% width, 2 TeV; under-recovers at 30% width, 4 TeV (median $\hat r/r$ = 0.68; Feldman–Cousins intervals needed) |
+| Cost of systematics on the expected limit | ×1.15–2.27, largest at 1.4–1.6 TeV |
+| 2026 contribution | about 4% on the expected limit |
 
-### Selected transfer-function order (2026-06-18)
+### $t\bar t$ normalisation
 
-The F-test selects **`2x1` for both the central and forward categories**: going
-from `1x1` to `2x1` is strongly preferred, while going from `2x1` to `2x2` is
-not. `jsons/TransferFunctions.json` is set to `cen2024 = 2x1`, `fwd2024 = 2x1`.
+The $t\bar t$ simulation lies above the data in the sidebands. The masked fit absorbs this
+with the per-year $t\bar t$ rates (all pulled below 1) and pulls `toppt` by −1.55σ and
+`ttag_band_hipt` by −1.7σ (tracker, 2026-10-22). Both reviews ask for this to be fixed
+before the transfer function, ideally with a $t\bar t$-enriched control region (for example
+with a b-tagged subjet). Options and the top-$p_T$ side are on
+[Top-pT reweighting](top-pt-reweighting.md#open-decision). No decision as of 2026-10-22.
 
-| Comparison | Central | Forward |
+## Known limitations
+
+- No template statistical uncertainty (`autoMCStats` does not work with the 2D pdfs).
+- Lumi correlations, the JES source split, the tight/band SF covariance and the 2022/23
+  SF transfer are placeholders.
+- Summing the sub-eras needs a split-versus-merged closure check.
+- TF positivity and the fitted TF surfaces are still to be shown.
+
+## History
+
+| Date | Change | Reference |
 | --- | --- | --- |
-| `1x1` → `2x1` | preferred (F = 14.8, p ≈ 0.000) | preferred (F = 12.2, p = 0.001) |
-| `2x1` → `2x2` | not preferred (F = 0.07, p = 0.79) → stop | not preferred (F = 0.09, p = 0.77) → stop |
-
-| Central: `1x1` → `2x1` | Central: `2x1` → `2x2` |
-| --- | --- |
-| ![Central 1x1 to 2x1 F-test](../assets/analysis/background-estimation/2024/ftest-decision/cen_1x1_to_2x1.png) | ![Central 2x1 to 2x2 F-test](../assets/analysis/background-estimation/2024/ftest-decision/cen_2x1_to_2x2.png) |
-
-| Forward: `1x1` → `2x1` | Forward: `2x1` → `2x2` |
-| --- | --- |
-| ![Forward 1x1 to 2x1 F-test](../assets/analysis/background-estimation/2024/ftest-decision/fwd_1x1_to_2x1.png) | ![Forward 2x1 to 2x2 F-test](../assets/analysis/background-estimation/2024/ftest-decision/fwd_2x1_to_2x2.png) |
-
-### Fit configuration notes
-
-- Luminosity 109.95 fb⁻¹ (13.6 TeV, golden JSON).
-- Signal strength restricted to **r ≥ 0** with initial value **r = 0** (allowing
-  negative r or starting at r = 1 caused fit-stability failures).
-- A **clamp-to-data** floor is applied to empty / sub-event QCD cells; this is
-  what allows the forward fit to pass goodness-of-fit.
-- 2024 top-tag scale factor is a **placeholder (0.90/tag)** pending a measured
-  GloParT-v3 value.
-
-The scan varies polynomial order within the existing 2D transfer-function
-construction. It does **not** test unrelated functional families such as
-Laurent, exponential, or Chebyshev functions.
-
-## Reproducing The Scan
-
-Run from the standalone `bgestimation/` area in the compatible
-CMSSW/2DAlphabet environment:
-
-```bash
-cd /uscms_data/d3/amandal2/bg_ttbar/CMSSW_14_1_0_pre4/src/bgestimation
-
-LOCAL_INPUT="/eos/user/a/amandal/ttbarhad_root_files/2dAlphabetInputs"
-
-python -u fit_ftest.py \
-  --preset 2024 \
-  --input "$LOCAL_INPUT" \
-  --signal RSGluon4000 \
-  2>&1 | tee output_ftest_2024.log
-
-python -u results_ftest.py \
-  --preset 2024 \
-  --signal RSGluon4000 \
-  2>&1 | tee output_ftest_results_2024.log
-```
-
-The work areas are written under:
-
-```text
-ftest/2024/{cen,fwd}/ttbarfits_{cen,fwd}2024_ftest<TF>/
-```
-
-The numerical summaries and pairwise plots are written under:
-
-```text
-ftest_results/
-```
-
-Preserve each work area's `runConfig.json`, card, GOF ROOT file, and fit logs.
-The current launcher updates the selected config's input path and signal list
-before constructing the fit; `runConfig.json` is the fit-specific record.
-
-## F-test Summary
-
-The stored CSV tables contain the simple and complex candidate labels, parameter
-counts, the bin count used by the script, observed F statistic, and p-value.
-Rows with `p < 0.05` are highlighted in red in the presentation tables.
-
-The raw output contains 11 central and 6 forward rows with `p < 0.05`. This
-count includes all unequal-parameter pairings and is not itself a model-choice
-criterion.
-
-### Central tables
-
-| | |
-| --- | --- |
-| ![Central F-test table, page 1](../assets/analysis/background-estimation/2024/ftest-tables/summary-2.png) | ![Central F-test table, page 2](../assets/analysis/background-estimation/2024/ftest-tables/summary-3.png) |
-| ![Central F-test table, page 3](../assets/analysis/background-estimation/2024/ftest-tables/summary-4.png) | |
-
-### Forward tables
-
-| | |
-| --- | --- |
-| ![Forward F-test table, page 1](../assets/analysis/background-estimation/2024/ftest-tables/summary-5.png) | ![Forward F-test table, page 2](../assets/analysis/background-estimation/2024/ftest-tables/summary-6.png) |
-| ![Forward F-test table, page 3](../assets/analysis/background-estimation/2024/ftest-tables/summary-7.png) | |
-
-### Example pairwise plots
-
-| Central: `0x0` versus `0x1` | Forward: `0x0` versus `0x1` |
-| --- | --- |
-| ![Central 0x0 versus 0x1 F-test](../assets/analysis/background-estimation/2024/pairwise/FTest_0x0_0x1_2024_cen.png) | ![Forward 0x0 versus 0x1 F-test](../assets/analysis/background-estimation/2024/pairwise/FTest_0x0_0x1_2024_fwd.png) |
-
-## Goodness of Fit
-
-Saturated goodness-of-fit, background-only, with the top-mass signal window
-masked (blinded), 200 toys, at the selected `2x1` order. The observed test
-statistic (blue arrow) sits inside the toy distribution in both categories, so
-the background model describes the data well.
-
-| Central `2x1` — p = 0.485 | Forward `2x1` (clamp-to-data) — p = 0.180 |
-| --- | --- |
-| ![Central goodness of fit](../assets/analysis/background-estimation/2024/gof/cen_2x1.png) | ![Forward goodness of fit](../assets/analysis/background-estimation/2024/gof/fwd_2x1_clamp.png) |
-
-## Transfer Function
-
-The transfer function maps the fail-region QCD model into the pass region. Both
-categories use the order
-
-$$R_{\mathrm{p/f}}(m_t, m_{t\bar t}) = (a + b\,m_t + c\,m_t^2)\,(1 + d\,m_{t\bar t}).$$
-
-Fitted parameters (background-only fit, normalized coordinates):
-
-| Parameter | 2024 central | 2024 forward |
-| --- | --- | --- |
-| a | 3.61 ± 0.83 | 3.82 ± 0.82 |
-| b | 16.57 ± 10.91 | 23.75 ± 13.02 |
-| c | −16.25 ± 13.42 | −29.90 ± 16.34 |
-| d | 1.01 ± 1.23 | −0.52 ± 0.26 |
-
-### Fail-region QCD (transfer-function input)
-
-| Central | Forward |
-| --- | --- |
-| ![Central fail QCD 2D](../assets/analysis/background-estimation/2024/transfer-function/qcd_fail_cen.png) | ![Forward fail QCD 2D](../assets/analysis/background-estimation/2024/transfer-function/qcd_fail_fwd.png) |
-
-### Pass-region QCD, prefit vs postfit
-
-The prefit pass estimate (initial transfer function, signal window masked) is
-sparse; after the fit the data-driven QCD estimate is smooth across the plane.
-
-| Central prefit | Central postfit |
-| --- | --- |
-| ![Central QCD pass prefit](../assets/analysis/background-estimation/2024/transfer-function/qcd_pass_prefit_cen.png) | ![Central QCD pass postfit](../assets/analysis/background-estimation/2024/transfer-function/qcd_pass_postfit_cen.png) |
-
-| Forward prefit | Forward postfit |
-| --- | --- |
-| ![Forward QCD pass prefit](../assets/analysis/background-estimation/2024/transfer-function/qcd_pass_prefit_fwd.png) | ![Forward QCD pass postfit](../assets/analysis/background-estimation/2024/transfer-function/qcd_pass_postfit_fwd.png) |
-
-## Statistical Interpretation
-
-!!! warning "The scan is provisional"
-    The standard F-test interpretation assumes nested models. The current
-    implementation orders candidates by parameter count and compares every pair
-    with different counts. Some stored pairs are not obviously nested. Use
-    non-nested rows as diagnostics, not calibrated model-selection p-values.
-
-Before freezing the model:
-
-1. Define the allowed nested comparison graph.
-2. Validate the effective number of fitted bins and degrees of freedom.
-3. Confirm the treatment of blinded pass-region signal-window bins.
-4. Check fit convergence, nuisance pulls, and correlations for retained models.
-5. Use postfit residuals and closure checks alongside the F-test.
-
-The current CSVs use `n_bins = 165`, corresponding to \(11\times15\). The
-implementation should be reviewed to confirm whether the pass/fail region count
-and blinded bins are represented consistently with the intended F-test
-definition.
-
-An F statistic of zero is written when the nominally more complex candidate
-does not improve the saturated GOF value. Such a row appears as `p = 1`; this
-does not by itself mean the fit failed.
-
-## Postfit \(m_{t\bar{t}}\) Projections
-
-Each source page contains six background-only projections: pass and fail
-regions for the low, signal-window, and high top-candidate-mass intervals.
-
-### Selected-order projections (corrected labels)
-
-Final background-only postfit projections at the selected `2x1` order, with the
-luminosity/energy label corrected to `109.95 fb⁻¹ (13.6 TeV)`. The pass
-signal-window panel has no data points (blinded).
-
-| Central `2x1` | Forward `2x1` |
-| --- | --- |
-| ![Central postfit projections 2x1](../assets/analysis/background-estimation/2024/postfit-projy-final/cen.png) | ![Forward postfit projections 2x1](../assets/analysis/background-estimation/2024/postfit-projy-final/fwd.png) |
-
-## Presentation Downloads
-
-- [All pairwise F-test plots](../assets/analysis/background-estimation/2024/pdfs/FTest_pairwise_results_2024.pdf)
-- [F-test numerical tables](../assets/analysis/background-estimation/2024/pdfs/FTest_summary_tables_2024.pdf)
-
-## Current Takeaway
-
-The 2024 background model is selected and validated (blinded): the F-test
-chooses **`2x1` for both central and forward**, and the saturated
-goodness-of-fit passes in both categories (cen p = 0.485, fwd p = 0.180 with
-clamp-to-data). Transfer-function parameters, prefit/postfit pass-region QCD,
-and corrected-label postfit projections are documented above. Downstream
-blinded limits and impacts are on the [Results](results.md) page.
-
-Remaining work is physics inputs and unblinding, not the background method.
-
-## Open Items
-
-- Replace the placeholder 2024 top-tag scale factor (0.90/tag) with a measured
-  GloParT-v3 value.
-- Add nuisance pull/correlation summaries to the documentation (impacts are on
-  the Results page).
-- Confirm `n_bins` / blinded-bin accounting in the F-test bookkeeping.
-- Proceed to observed limits and full systematics once approved to unblind.
+| 2026-06-18 | 2024-only model, F-test picks 2×1 cen and fwd, masked GoF passing | [June background estimation](../archive/2026-06/background-estimation.md) |
+| 2026-06-25 | 2025 added; floating `ttagSF` rateParam removed (degenerate with $r$); $t\bar t$ prior 20% → 30% | research-notes `ttbarhadronic_2025_combined_fit_wiring` |
+| 2026-07-23 | June inputs found to carry a stale loose WP; all June fit choices superseded. Tight-WP inputs; central fit fails without a measured SF, flat placeholder $t\bar t$ scale 0.75 (cen) / 0.90 (fwd) | research-notes `ttbarhadronic_tightwp_2425_limit_campaign` |
+| 2026-07-31 | Measured top-tag SF replaces the placeholder (skimmer v1) | skimmer tag `v1` |
+| 2026-08-14 | 2024 + 2025, F-test ratified cen 2×2, fwd 2×0 (2×1's $y$ slope unsupported); 9 nuisances; fail-closed fit gates | bgestimation `1085d9a` |
+| 2026-10-04 | Run-3 2022–2026 model: one TF per year-region, 39 nuisances, per-year F-test; constant TF for the limits | bgestimation `011ad5c` |
+| 2026-10-08 | Blinded validation of the constant-TF five-year fit; Pass-sideband-only F-test | tracker `run3-validation`, bgestimation `4ccc225` |
+| 2026-10-13 | Stacked and years-summed post-fit projections | bgestimation `2dd07f4` |
